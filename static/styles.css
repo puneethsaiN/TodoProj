@@ -1,0 +1,33 @@
+body {
+	background: #E8FFCE;
+	font-family: 'Oswald', 'Futura', sans-serif;
+}
+#wrapper {
+	margin-top: 10% !important;
+}
+#content {
+	background: #ACFADF;
+	padding: 25px;
+}
+#content > h2 {
+	font-size: 18px;
+	text-align: center;
+	padding-top: 0;
+}
+.t10 {
+	margin-top: 10px;
+}
+.t20 {
+	margin-top: 20px;
+}
+.todo-completed {
+	text-decoration: line-through;
+	background: #7C73C0;
+}
+footer {
+	margin-top: 20px;
+	color: black;
+}
+.list-group-item{
+	color : black;	
+}
