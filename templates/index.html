@@ -36,12 +36,12 @@
 						<div class="col-lg-12">
 							<div class="btn-toolbar">
 								<div class="btn-group">
-									<a href="/deletemarked"><button type="button" class="btn btn-warning">
+									<a href="/delCompTodo/"><button type="button" class="btn btn-warning">
 										<i class="glyphicon glyphicon-trash"></i> DELETE COMPLETED
 									</button></a>
 								</div>
 								<div class="btn-group">
-									<a href="/deletealltodos"><button type="button" class="btn btn-warning">
+									<a href="/delAllTodo/"><button type="button" class="btn btn-warning">
 										<i class="glyphicon glyphicon-trash"></i> DELETE ALL
 									</button></a>
 								</div>
@@ -52,9 +52,9 @@
 					<ul class="list-group t20">
 						{% for todo in todo_list %}
 							{% if todo.complete %}
-								<a href="/unmarktodo/{{todo.id}}"><li class="list-group-item todo-completed">{{todo.text}}</li></a>
+								<a href="/toggletodo/{{todo.id}}"><li class="list-group-item todo-completed">{{todo.text}}</li></a>
 							{% else %}
-								<a href="/marktodo/{{todo.id}}"><li class="list-group-item">{{todo.text}}</li></a>
+								<a href="/toggletodo/{{todo.id}}"><li class="list-group-item">{{todo.text}}</li></a>
 							{% endif %}
 						{% endfor %}
 					</ul>
