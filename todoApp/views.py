@@ -6,7 +6,7 @@ import requests
 
 # Create your views here.
 def index(request):
-	url = 'http://127.0.0.1:8000/getAllTodo/'
+	url = f'{request.path}/getAllTodo/'
 	todo_list = requests.get(url)
 	form = todoForm()
 	context = {'todo_list' : todo_list.json(), 'form' : form}
@@ -14,7 +14,7 @@ def index(request):
 
 @require_POST
 def addTodo(request):
-	url = 'http://127.0.0.1:8000/addTodoItem/'
+	url = f'{request.path}/addTodoItem/'
 	form = todoForm(request.POST)
 	if form.is_valid():
 		obj = {
@@ -24,7 +24,7 @@ def addTodo(request):
 	return redirect('index') #redirect to same page to refresh
 
 def toggleTodo(request, todo_id):
-	url = F'http://127.0.0.1:8000/changeTodo/{todo_id}/'
+	url = F'{request.path}/changeTodo/{todo_id}/'
 	requests.patch(url)
 	return redirect('index')
 
@@ -37,12 +37,12 @@ def toggleTodo(request, todo_id):
 # 	return redirect('index')
 
 def deleteAllTodo(request):
-	url = F'http://127.0.0.1:8000/deleteAllTodo/'
+	url = F'{request.path}/deleteAllTodo/'
 	requests.delete(url)
 	return redirect('index')
 
 def deleteCompTodo(request):
-	url = F'http://127.0.0.1:8000/deleteCompTodo/'
+	url = F'{request.path}/deleteCompTodo/'
 	requests.delete(url)
 	return redirect('index')
 
