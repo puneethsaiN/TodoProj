@@ -5,8 +5,9 @@ from .forms import todoForm
 import requests
 
 # Create your views here.
+base_url = "https://web-production-5c36a.up.railway.app"
 def index(request):
-	url = f'{request.path}/getAllTodo/'
+	url = f'{base_url}/getAllTodo/'
 	todo_list = requests.get(url)
 	form = todoForm()
 	context = {'todo_list' : todo_list.json(), 'form' : form}
@@ -14,7 +15,7 @@ def index(request):
 
 @require_POST
 def addTodo(request):
-	url = f'{request.path}/addTodoItem/'
+	url = f'{base_url}/addTodoItem/'
 	form = todoForm(request.POST)
 	if form.is_valid():
 		obj = {
@@ -24,7 +25,7 @@ def addTodo(request):
 	return redirect('index') #redirect to same page to refresh
 
 def toggleTodo(request, todo_id):
-	url = F'{request.path}/changeTodo/{todo_id}/'
+	url = f'{base_url}/changeTodo/{todo_id}/'
 	requests.patch(url)
 	return redirect('index')
 
@@ -37,12 +38,12 @@ def toggleTodo(request, todo_id):
 # 	return redirect('index')
 
 def deleteAllTodo(request):
-	url = F'{request.path}/deleteAllTodo/'
+	url = f'{base_url}/deleteAllTodo/'
 	requests.delete(url)
 	return redirect('index')
 
 def deleteCompTodo(request):
-	url = F'{request.path}/deleteCompTodo/'
+	url = f'{base_url}/deleteCompTodo/'
 	requests.delete(url)
 	return redirect('index')
 
